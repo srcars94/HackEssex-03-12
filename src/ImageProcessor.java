@@ -12,13 +12,7 @@ import java.util.*;
 public class ImageProcessor implements Runnable{
 
     private BufferedImage image = null;
-
-//    private List<String[]> imageContents = new ArrayList<>();
     private List<RGB[]> imageContents = new ArrayList<>();
-    private Map<RGB, Character> asciiValues = new HashMap<>();
-    private List<Character> asciis = new ArrayList<>();
-    private static final int MIN_ASCII = 65;
-    private static final int MAX_ASCII = 90;
 
     public ImageProcessor(BufferedImage image){
         this.image = image;
@@ -26,7 +20,6 @@ public class ImageProcessor implements Runnable{
 
     public void run(){
         System.out.println("ANALYSING IMAGE");
-//        String[] line = new String[image.getWidth()];
         RGB[] line = new RGB[image.getHeight()];
         for(int y = 0; y < image.getHeight(); y++){
             for(int x = 0; x < image.getWidth(); x++){
@@ -85,11 +78,29 @@ public class ImageProcessor implements Runnable{
     }
 
     public char getAscii(int value){
-        if(isBetween(0, 50, value)) return '#';
-        if(isBetween(51, 100, value)) return '@';
-        if(isBetween(101, 150, value)) return '%';
-        if(isBetween(151, 200, value)) return '&';
-        if(isBetween(201, 255, value)) return '*';
+//        if(isBetween(0, 50, value)) return '#';
+//        if(isBetween(51, 100, value)) return '@';
+//        if(isBetween(101, 150, value)) return '%';
+//        if(isBetween(151, 200, value)) return '&';
+//        if(isBetween(201, 255, value)) return '*';
+
+//        if(isBetween(0, 28, value)) return '#';
+//        if(isBetween(29, 56, value)) return '@';
+//        if(isBetween(57, 84, value)) return '%';
+//        if(isBetween(85, 112, value)) return '&';
+//        if(isBetween(113, 140, value)) return '?';
+//        if(isBetween(141, 168, value)) return '"';
+//        if(isBetween(169, 196, value)) return '~';
+//        if(isBetween(197, 224, value)) return '*';
+//        if(isBetween(225, 255, value)) return '\'';
+
+        if(isBetween(0, 35, value)) return '#';
+        if(isBetween(36, 72, value)) return '@';
+        if(isBetween(72, 108, value)) return '&';
+        if(isBetween(108, 143, value)) return ';';
+        if(isBetween(144, 179, value)) return '"';
+        if(isBetween(180, 215, value)) return '*';
+        if(isBetween(216, 255, value)) return '\'';
         return ' ';
     }
     public boolean isBetween(int min, int max, int value){
