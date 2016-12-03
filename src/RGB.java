@@ -1,42 +1,48 @@
-/**
- * Created by Matthew on 03/12/2016.
- */
-public class RGB {
+public class RGB
+{
+    private int R;
+    private int G;
+    private int B;
 
-    private int R, G, B;
-
-    public RGB(int R, int G, int B){
+    public RGB(int R, int G, int B)
+    {
         this.R = R;
         this.G = G;
         this.B = B;
     }
 
-    public int getR() {
-        return R;
+    public int getR()
+    {
+        return this.R;
     }
 
-    public void setR(int r) {
-        R = r;
+    public void setR(int r)
+    {
+        this.R = r;
     }
 
-    public int getG() {
-        return G;
+    public int getG()
+    {
+        return this.G;
     }
 
-    public void setG(int g) {
-        G = g;
+    public void setG(int g)
+    {
+        this.G = g;
     }
 
-    public int getB() {
-        return B;
+    public int getB()
+    {
+        return this.B;
     }
 
-    public void setB(int b) {
-        B = b;
+    public void setB(int b)
+    {
+        this.B = b;
     }
 
-    @Override
-    public String toString(){
+    public String toString()
+    {
         return "(" + getR() + "," + getG() + "," + getB() + ")";
     }
 }

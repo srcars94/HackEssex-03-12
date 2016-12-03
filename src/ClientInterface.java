@@ -56,9 +56,8 @@ public class ClientInterface implements Runnable{
                 ip.outputFile = false;
                 Thread ipThread = new Thread(ip);
                 ipThread.start();
-//                Thread.sleep(100);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
