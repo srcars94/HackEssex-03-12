@@ -9,8 +9,6 @@ public class MainR {
             Thread ciThread = new Thread(ci);
             ciThread.start();
         }
-        catch (Exception localException) {
-            localException.printStackTrace();
-        }
+        catch (Exception localException) {}
     }
 }

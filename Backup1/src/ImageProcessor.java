@@ -15,25 +15,12 @@ public class ImageProcessor
     private List<RGB[]> imageContents = new ArrayList();
     public boolean outputFile = true;
     public JTextArea outputTo;
-    private ClientInterface ci;
 
     public ImageProcessor(BufferedImage image)
     {
         this.image = image;
-
-        chars[0] = '#';
-        chars[1] = '@';
-        chars[2] = '&';
-        chars[3] = ';';
-        chars[4] = '\"';
-        chars[5] = '*';
-        chars[6] = '\'';
     }
 
-
-    public void setCI(ClientInterface ci){
-        this.ci = ci;
-    }
     public void run()
     {
 //        System.out.println("ANALYSING IMAGE");
@@ -91,18 +78,19 @@ public class ImageProcessor
 
     public void saveToFile()
     {
-        try{
-//            PrintWriter out = new PrintWriter("AsciiOutput.txt");
-//            for (RGB[] line : this.imageContents)
-//            {
-//                for (RGB s : line) {
-//                    out.print(s);
-//                }
-//                out.println();
-//            }
-//            out.close();
+        try
+        {
+            PrintWriter out = new PrintWriter("output.txt");
+            for (RGB[] line : this.imageContents)
+            {
+                for (RGB s : line) {
+                    out.print(s);
+                }
+                out.println();
+            }
+            out.close();
 
-            PrintWriter out = new PrintWriter("AsciiOutput.txt");
+            out = new PrintWriter("output2.txt");
             for (RGB[] line : this.imageContents)
             {
                 for (RGB s : line) {
@@ -125,44 +113,33 @@ public class ImageProcessor
         return rnd.nextInt(max - min + 1) + min;
     }
 
-    public char[] chars = new char[7];
-
-    synchronized public char getChar(int pos){
-        return chars[pos];
-    }
-
-    synchronized public char getAscii(int value)
+    public char getAscii(int value)
     {
         if (isBetween(0, 35, value)) {
-            return getChar(0);
+            return '#';
         }
         if (isBetween(36, 72, value)) {
-            return getChar(1);
+            return '@';
         }
         if (isBetween(72, 108, value)) {
-            return getChar(2);
+            return '&';
         }
         if (isBetween(108, 143, value)) {
-            return getChar(3);
+            return ';';
         }
         if (isBetween(144, 179, value)) {
-            return getChar(4);
+            return '"';
         }
         if (isBetween(180, 215, value)) {
-            return getChar(5);
+            return '*';
         }
         if (isBetween(216, 255, value)) {
-            return getChar(6);
+            return '\'';
         }
         return ' ';
     }
 
-    synchronized public void setChar(int pos, char val){
-        chars[pos] = val;
-        System.out.println(val);
-    }
-
-    synchronized public boolean isBetween(int min, int max, int value)
+    public boolean isBetween(int min, int max, int value)
     {
         return (min <= value) && (value <= max);
     }
